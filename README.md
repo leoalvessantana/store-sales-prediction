@@ -3,7 +3,7 @@
 **Disclaimer:** A empresa, o contexto e as perguntas de negócio a seguir são completamente fictícias, foram criadas apenas para o desenvolvimento do projeto, e se baseiam em um desafio do Kaggle. 
 
 <div align="center">
-<img src="img/img_rossmann" width="800px" />
+<img src="img/img_rossmann.png" width="800px" />
 </div>
 
 
