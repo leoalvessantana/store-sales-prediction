@@ -3,7 +3,7 @@
 **Disclaimer:** A empresa, o contexto e as perguntas de negócio a seguir são completamente fictícias, foram criadas apenas para o desenvolvimento do projeto, e se baseiam em um desafio do Kaggle. 
 
 <div align="center">
-<img src="img/img_rossmann.png" width="800px" />
+<img src="img/img_rossmann.jpg" width="800px" />
 </div>
 
 
@@ -70,6 +70,6 @@ O conjunto de dados que representam o contexto está disponível na plataforma d
 
 
 ## Obervação
-O projeto em desenvolvimento.
+Projeto em desenvolvimento.
 
 
