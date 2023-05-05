@@ -19,7 +19,7 @@ Para a construção da solução, foram consideradas as seguintes premissas:
 * Os dias em que as lojas estavam fechadas foram descartadas na realização da previsão.
 * LOjas que não possuíam dados de competidores próximos tiveram o valor da distância fixada em 200.000 metros.
 
-## 2.1. Descrição dos Dados
+### 2.1. Descrição dos Dados
 O conjunto de dados que representam o contexto está disponível na plataforma do Kaggle. Esse é o link: https://www.kaggle.com/c/rossmann-store-sales/data. O dataset possui os seguintes atributos:
 
 | Atributo                          | Descrição                                                                                                                                             |
@@ -51,7 +51,7 @@ Para fazer a entrega da primeira solução de maneira o mais rápido possível, 
 
 O método CRISP-DS consiste em 9 passos ciclicos, onde a cada iteração dos nove passos, o resultado de negócio vai sendo aperfeiçoado, visando entregas cada vez mais rápidas e cada vez com mais qualidade e acertivas, possibilitando assim que as equipes que irão utilizar os resultados desenvolvidos tenham um produto um produto minimamente utilizável na primeira entrega e que é aperfeiçoado ao longo do tempo.
 
-## Passos do CRISP-DS:
+### Passos do CRISP-DS:
 1. **Problema de Negócio:** Esta etapa tem como objtive receber o problema de negócio que será resolvido. É nesta etapa que é recebido a pergutna ou o pedido feito pelo dono do problema, que no caso deste projeto, é o CFO da rede Rossmann.
 2. **Entendimento de Negócio:** Esta etapa tem como objetivo entender a dor do dono do problema e qual a sua real necessidade. Nesta etapa podem surgir protótipos da solução para validar com o dono do problema o que ele deseja como solução. 
 3. **Coleta de Dados:** Esta etapa tem como objetivo realizar a coleta dos dados, buscando eles nas tabelas do(s) banco(s) de dados da empresa. No nosso caso acessando a plataforma do Kaggle para download dos arquivos que serão usados.
@@ -62,12 +62,12 @@ O método CRISP-DS consiste em 9 passos ciclicos, onde a cada iteração dos nov
 8. **Avaliação de Performance:** Esta etapa tem como objetivo verificar a performance do algoritmo selecionado na etapa anterior com os resultados atuais, ou *base line* atual. Neste momento é feito a tradução da performance do algoritmo para perfomance de negócio. Ou seja, quanto a solução criada tratrá de retorno financeiro para a empresa. Caso a performance seja aceitável, o algoritmo é publicado e é retornado para a etapa de entendimento de negócio novamente, a fim entender melhor possíveis lacunas e assim melhorar a performance do algoritmo selecionado. Caso a performance não seja aceitável, o algoritmo não é publicado e é retornado para a etapa de entendimento de negócio para fazer uma nova iteração e assim melhorar a performance da solução.
 9. **Publicação da Solução:** Esta etapa tem como objetivo publicar o algoritmo selecionado, deixando publico e utilizável a solução criada.
 
-## 3.1. Produto Final
+### 3.1. Produto Final
 Foi combinado com o CFO que seria entregue um Bot dentro do aplicativo Telegram, facilitando assim que o CFO verifique a previsão das lojas independente do local em que ele esteja.
 
 Além disso, no processo de criação do produto final, será criado uma API que será utilizada para retornar as previsões das lojas. Essa API irá utilizar o modelo de Machine Learning desenvolvido para realizar a previsão.
 
-## 3.2. Ferramentas Utilizadas 
+### 3.2. Ferramentas Utilizadas 
 Até o momento foram utilizadas as seguintes ferramentas:
 - Versionador de código Git
 - Jupyter Notebook
