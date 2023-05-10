@@ -75,6 +75,6 @@ Até o momento foram utilizadas as seguintes ferramentas:
 
 
 ## Obervação
-Projeto em desenvolvimento. Atualmente estamos na etapa de aplicar algoritmos de Machine Learning, que é o passo 7 do método CRISP-DS.SSS
+Projeto em desenvolvimento. Atualmente estamos na etapa de aplicar algoritmos de Machine Learning, que é o passo 7 do método CRISP-DS.
 
 
