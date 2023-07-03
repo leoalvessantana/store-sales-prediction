@@ -3,10 +3,20 @@ import inflection
 import pandas as pd
 import numpy as np
 import math
-import datetime
+from datetime import datetime, timedelta
 
 
 
+def is_promo(row):
+    if row['promo_interval'] == 0:
+        return 0
+    elif row['month_map'] in row['promo_interval'].split(','):
+        return 1
+    else:
+        return 0
+    
+    
+    
 class Rossmann( object ):
     '''
     Essa classe tera limpeza, transformações e encoding
@@ -14,12 +24,16 @@ class Rossmann( object ):
 
         
     def __init__( self ):
-        self.home_path='C:\Users\leona\Documents\repos\ds_producao'
-        self.competition_distance_scaler    = pickle.load( open( self.home_path + 'parameter\competition_distance_scaler.pkl', 'rb') )
-        self.competition_time_month_scaler  = pickle.load( open( self.home_path + 'parameter\competition_time_month_scaler.pkl', 'rb') )
-        self.promo_time_week_scaler         = pickle.load( open( self.home_path + 'parameter\promo_time_week_scaler.pkl', 'rb') )
-        self.year_scaler                    = pickle.load( open( self.home_path + 'parameter\year_scaler.pkl', 'rb') )
-        self.store_type_scaler              = pickle.load( open( self.home_path + 'parameter\store_type_scaler.pkl', 'rb') )
+        '''
+        Construtor. Essa é a primeira coisa a rodar quando a classe Rossman é instanciada
+        '''  
+        self.home_path='C:/Users/leona/Documents/repos/ds_producao/'
+        
+        self.competition_distance_scaler    = pickle.load( open( self.home_path + 'parameter/competition_distance_scaler.pkl', 'rb') )
+        self.competition_time_month_scaler  = pickle.load( open( self.home_path + 'parameter/competition_time_month_scaler.pkl', 'rb') )
+        self.promo_time_week_scaler         = pickle.load( open( self.home_path + 'parameter/promo_time_week_scaler.pkl', 'rb') )
+        self.year_scaler                    = pickle.load( open( self.home_path + 'parameter/year_scaler.pkl', 'rb') )
+        self.store_type_scaler              = pickle.load( open( self.home_path + 'parameter/store_type_scaler.pkl', 'rb') )
 
 
     def data_cleaning( self, df1 ):
@@ -124,16 +138,12 @@ class Rossmann( object ):
         '''
 
         ## 5.2. Rescaling
-        # competition distance
         df5['competition_distance'] = self.competition_distance_scaler.fit_transform( df5[['competition_distance']].values )
         
-        # competition time month
         df5['competition_time_month'] = self.competition_time_month_scaler.fit_transform( df5[['competition_time_month']].values )
         
-        # promo time week
         df5['promo_time_week'] = self.promo_time_week_scaler.fit_transform( df5[['promo_time_week']].values )
         
-        # year
         df5['year'] = self.year_scaler.fit_transform( df5[['year']].values )
         
         ### 5.3.1. Encoding
