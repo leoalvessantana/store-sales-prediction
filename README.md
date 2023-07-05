@@ -142,7 +142,7 @@ A seguir é exibido o resultado das previsões em termos financeiros das próxim
 
 <div align="center">PREVISÕES DE CINCO LOJAS ROSSMANN
 
-| store |predictions (€)|worst_scenario (€)|best_scenario (€)| MAE (€) |MAPE (%)|
+| store |predictions ($)|worst_scenario ($)|best_scenario ($)| MAE ($) |MAPE ($)|
 |:-----:|:-------------:|:----------------:|:---------------:|:-------:|:------:|
 |   1   |   160907.6    |     160590.1     |     161225.2    |  317.5  |  7.2   |
 |   2   |   172382.4    |     172017.2     |     172747.5    |  365.1  |  7.3   |
@@ -158,16 +158,24 @@ A seguir é exibido o resultado das previsões em termos financeiros das próxim
 
 |**Scenarios**:|  predictions   | worst_scenario   | best_scenario |
 |:-------:|:--------------:|:----------------:|:-------------:|
-|**Values**:|€282,430,784.0 | €281,696,979.7  |€283,165,598.9|
+|**Values**:|$282,430,784.0 | $281,696,979.7  |$283,165,598.9|
 </div>
 
 
+# 6. Produto final
+Para disponibilizar esses resultados de forma prática e remota foi criado a <a href="https://github.com/leoalvessantana/store-sales-prediction/tree/main/api">api</a> utilizando a biblioteca Flask e feito o deploy na plataforma Render. 
 
 
+# 7. Conclusão e Próximos Passos
+O primeiro ciclo do CRISP-DS foi concluído com sucesso, passamos por todas etapas essências de um projeto real de ciência de dados. Obtemos insights preciosos sobre as vendas das lojas Rossmann durante o processo de EDA, que possibilitou definir um conjunto de features que entrega uma performance satisfatória ao utilizar o modelo XGBoost Regressor, possibilitando predições mais precisas das vendas das lojas da rede Rossmann nas seis semanas futuras.
+
+O modelo foi colocado em produção, o que possibilita a consulta de forma remota da previsão de vendas das lojas Rossmann, sendo necessário apenas uma conexão com a internet.
 
 
-
-## Obervação
-Projeto em desenvolvimento. Atualmente estamos na ultima etapa, que é de colocar o modelo em produção.
+**Próximos passos:**
+- Coletar feedbacks sobre a Usabilidade afim de implementar melhorias.
+- Fazer mais ciclos do CRISP adicionando mais camadas de complexidade a nossa solução, como por exemplo, implementar a pipeline do sklearn na criação do nosso modelo.
+- Melhorar o modelo afim de melhorar sua assertividade de previsões, alternado parâmetros e configurações do Modelo.
+- Testar outros algoritmos de Machine Learning.
 
 
