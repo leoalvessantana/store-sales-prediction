@@ -2,8 +2,6 @@ import pickle
 
 import pandas as pd
 from flask import Flask, Response, request
-from waitress import serve
-
 from rossmann.Rossmann import Rossmann
 
 # loading model
@@ -53,7 +51,3 @@ def rossmann_predict():
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
 
-# if __name__ == "__main__":
-#     serve(app, host="0.0.0.0", port=8080)
-
-    
