@@ -94,34 +94,29 @@ class Rossmann( object ):
         Recebe o dataset df2, realiza todos os 'feature engineering' e filtragem e por fim retorna um novo df2. É o passo 2 e 3 do nosso projeto.
         '''
 
-        # year
         df2['year'] = df2['date'].dt.year
 
-        # month
         df2['month'] = df2['date'].dt.month
 
-        # day
         df2['day'] = df2['date'].dt.day
 
-        # week of year
-        df2['week_of_year'] = df2['date'].dt.weekofyear
+        df2['week_of_year'] = df2['date'].apply(lambda x: x.isocalendar().week)
 
-        # year week
         df2['year_week'] = df2['date'].dt.strftime( '%Y-%W' )
 
-        # competition since
+
         df2['competition_since'] = df2.apply( lambda x: datetime( year=x['competition_open_since_year'], month=x['competition_open_since_month'],day=1 ), axis=1 )
         df2['competition_time_month'] = ( ( df2['date'] - df2['competition_since'] )/30 ).apply( lambda x: x.days ).astype( int )
         
-        # promo since
+
         df2['promo_since'] = df2['promo2_since_year'].astype( str ) + '-' + df2['promo2_since_week'].astype( str )
         df2['promo_since'] = df2['promo_since'].apply( lambda x: datetime.strptime( x + '-1', '%Y-%W-%w' ) - timedelta( days=7 ) )
         df2['promo_time_week'] = ( ( df2['date'] - df2['promo_since'] )/7 ).apply( lambda x: x.days ).astype( int )
         
-        # assortment
+
         df2['assortment'] = df2['assortment'].apply( lambda x: 'basic' if x == 'a' else 'extra' if x == 'b' else 'extended' )
         
-        # state holiday
+
         df2['state_holiday'] = df2['state_holiday'].apply( lambda x: 'public_holiday' if x == 'a' else 'easter_holiday' if x == 'b' else 'christmas' if x == 'c' else 'regular_day' )
         
 
