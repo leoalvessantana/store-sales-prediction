@@ -1,9 +1,10 @@
-import pickle
-import inflection
-import pandas as pd
-import numpy as np
 import math
+import pickle
 from datetime import datetime, timedelta
+
+import inflection
+import numpy as np
+import pandas as pd
 
 
 def is_promo(row):
@@ -26,7 +27,7 @@ class Rossmann( object ):
         '''
         Construtor. Essa é a primeira coisa a rodar quando a classe Rossman é instanciada
         '''  
-        self.home_path='C:/Users/leona/Documents/repos/ds_producao/'
+        self.home_path=''
         
         self.competition_distance_scaler    = pickle.load( open( self.home_path + 'parameter/competition_distance_scaler.pkl', 'rb') )
         self.competition_time_month_scaler  = pickle.load( open( self.home_path + 'parameter/competition_time_month_scaler.pkl', 'rb') )
