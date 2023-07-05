@@ -26,10 +26,13 @@ def rossmann_predict():
 
         # Instantiate Rossmann class
         pipeline = Rossmann()
+        
+        print('feature engineering')
 
         # data cleaning
         df1 = pipeline.data_cleaning( test_raw )
-
+        
+       
         # feature engineering
         df2 = pipeline.feature_engineering( df1 )
 

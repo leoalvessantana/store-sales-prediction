@@ -6,7 +6,6 @@ import math
 from datetime import datetime, timedelta
 
 
-
 def is_promo(row):
     if row['promo_interval'] == 0:
         return 0
@@ -59,7 +58,7 @@ class Rossmann( object ):
         df1['competition_open_since_month'] = df1.apply( lambda x: x['date'].month if math.isnan( x['competition_open_since_month'] ) else x['competition_open_since_month'], axis=1 )
 
         #competition_open_since_year
-        df1['competition_open_since_year'] = df1.apply( lambda x: x['date'].year if math.isnan( x['competition_open_since_year'] ) else ['competition_open_since_year'], axis=1 )
+        df1['competition_open_since_year'] = df1.apply( lambda x: x['date'].year if math.isnan( x['competition_open_since_year'] ) else x['competition_open_since_year'], axis=1 )
 
         #promo2_since_week
         df1['promo2_since_week'] = df1.apply( lambda x: x['date'].week if math.isnan( x['promo2_since_week'] ) else x['promo2_since_week'], axis=1 )
@@ -72,7 +71,9 @@ class Rossmann( object ):
         df1['promo_interval'].fillna(0, inplace=True )
         df1['month_map'] = df1['date'].dt.month.map( month_map )
         df1['is_promo'] = df1[['promo_interval', 'month_map']].apply( lambda x: 0 if x['promo_interval'] == 0 else 1 if x['month_map'] in x['promo_interval'].split( ',' ) else 0, axis=1 )
-
+        
+        print(df1['competition_open_since_year'].head())
+        
         ## 1.6. Change Data Types
         # competiton
         df1['competition_open_since_month'] = df1['competition_open_since_month'].astype( int )
@@ -81,6 +82,8 @@ class Rossmann( object ):
         # promo2
         df1['promo2_since_week'] = df1['promo2_since_week'].astype( int )
         df1['promo2_since_year'] = df1['promo2_since_year'].astype( int )
+        
+        print('astype')
 
         return df1
     
@@ -106,12 +109,12 @@ class Rossmann( object ):
         df2['year_week'] = df2['date'].dt.strftime( '%Y-%W' )
 
         # competition since
-        df2['competition_since'] = df2.apply( lambda x: datetime.datetime( year=x['competition_open_since_year'], month=x['competition_open_since_month'],day=1 ), axis=1 )
+        df2['competition_since'] = df2.apply( lambda x: datetime( year=x['competition_open_since_year'], month=x['competition_open_since_month'],day=1 ), axis=1 )
         df2['competition_time_month'] = ( ( df2['date'] - df2['competition_since'] )/30 ).apply( lambda x: x.days ).astype( int )
         
         # promo since
         df2['promo_since'] = df2['promo2_since_year'].astype( str ) + '-' + df2['promo2_since_week'].astype( str )
-        df2['promo_since'] = df2['promo_since'].apply( lambda x: datetime.datetime.strptime( x + '-1', '%Y-%W-%w' ) - datetime.timedelta( days=7 ) )
+        df2['promo_since'] = df2['promo_since'].apply( lambda x: datetime.strptime( x + '-1', '%Y-%W-%w' ) - timedelta( days=7 ) )
         df2['promo_time_week'] = ( ( df2['date'] - df2['promo_since'] )/7 ).apply( lambda x: x.days ).astype( int )
         
         # assortment
